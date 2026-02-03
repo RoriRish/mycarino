@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Valentine?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    /* Background video */
+    #bgVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+
+    /* Content container */
+    .content {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: LightCyan;
+      text-shadow: 2px 2px 5px black;
+      padding: 10px;
+    }
+
+    h1 {
+      font-family: cursive;
+      margin-bottom: 20px;
+    }
+
+    /* Cat in center */
+    #catPlaceholder {
+      width: 50%;
+      max-width: 200px;
+      margin-bottom: 15px;
+    }
+
+    /* Biceps bottom-right */
+    #bicepsPlaceholder {
+      position: fixed;
+      right: 15px;
+      bottom: 15px;
+      width: 80px;
+      z-index: 10;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+    }
+
+    #yesBtn {
+      background-color: #4CAF50;
+      color: white;
+      z-index: 5;
+    }
+
+    #noBtn {
+      background-color: #f44336;
+      color: white;
+      position: absolute;
+      z-index: 5;
+    }
+
+    /* Hello Kitty video bottom-left */
+    #kitty {
+      position: fixed;
+      left: 10px;
+      bottom: 10px;
+      width: 120px;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    /* Yes screen overlay */
+    #yesScreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 100;
+      text-align: center;
+      color: white;
+      padding: 20px;
+    }
+
+    #yesScreen img {
+      max-width: 80%;
+      max-height: 60%;
+      margin-bottom: 20px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background video -->
+  <video id="bgVideo" autoplay muted loop playsinline>
+    <source src="https://motionbgs.com/media/8831/under-the-starry-sky.960x540.mp4" type="video/mp4">
+  </video>
+
+  <!-- Hello Kitty dancing -->
+  <video id="kitty" autoplay muted loop playsinline>
+    <source src="https://i.gifer.com/7V0.mp4" type="video/mp4">
+  </video>
+
+  <!-- Biceps bottom-right -->
+  <img id="bicepsPlaceholder" src="https://drive.google.com/thumbnail?id=1wu3K3WZY1bJ0QXawe1m5gardfD-PGtfA" alt="My biceps">
+
+  <div class="content">
+
+    <!-- Cat in center -->
+    <img id="catPlaceholder" src="https://drive.google.com/thumbnail?id=1GyUllxDHimw2-NecYm8TOP_Bl7jZpwZI" alt="Cat holding flower">
+
+    <h1>Maria, will you be my Valentine? ❤️</h1>
+
+    <div>
+      <button id="noBtn">No</button>
+      <button id="yesBtn" onclick="yesClicked()">Yes</button>
+    </div>
+  </div>
+
+  <!-- Yes screen -->
+  <div id="yesScreen">
+    <img src="https://drive.google.com/thumbnail?id=1IuhOg8d_QgjU4QbkMf_wZclEi5KUpCSa" alt="Us">
+    <h2>YAY 💖</h2>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    // Make NO button keep moving around fast (works on phone + PC)
+    setInterval(() => {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    }, 400); // smaller = faster, try 300 if you want it crazier 😈
+
+    function yesClicked() {
+      document.getElementById("yesScreen").style.display = "flex";
+    }
+  </script>
+
+</body>
+</html>
